@@ -1,10 +1,10 @@
 CC = gcc
 CFLAGS = -Wall -g -fPIC
 
-all: mains maindloop maindrec
+all: mains maindloop 
 
 mains: main.o recursives loops
-	$(CC) $(CFLAGS) -o mains main.o libclassrec.a libclassloop.a
+	$(CC) $(CFLAGS) -o mains main.o libclassrec.a 
 
 maindloop: main.o loopd
 	$(CC) $(CFLAGS) -o maindloop main.o ./libclassloop.so
