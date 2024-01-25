@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -g -fPIC
 
-all: mains
+all: mains maindloop maindrec
 
 .PHONY: all clean
 
