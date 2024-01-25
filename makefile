@@ -27,5 +27,7 @@ loops: advancedClassificationLoop.o basicClassification.o
 main.o: main.c NumClass.h
 	$(CC) $(CFLAGS) -c main.c
 
+.PHONY: all clean
+
 clean:
 	rm -f *.o *.a *.so mains maindloop maindrec
