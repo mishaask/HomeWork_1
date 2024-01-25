@@ -3,8 +3,8 @@ CFLAGS = -Wall -g -fPIC
 
 all: mains maindloop maindrec
 
-mains: main.o recursives
-	$(CC) $(CFLAGS) -o mains main.o libclassrec.a
+mains: main.o recursives loops
+	$(CC) $(CFLAGS) -o mains main.o libclassrec.a libclassloop.a
 
 maindloop: main.o loopd
 	$(CC) $(CFLAGS) -o maindloop main.o ./libclassloop.so
