@@ -5,9 +5,9 @@ int main() {
     int number1;
     int number2;
 
-    printf("Enter a number: ");
+    //printf("Enter a number: ");
     scanf("%d", &number1);
-    printf("Enter a second number: ");
+    //printf("Enter a second number: ");
     scanf("%d", &number2);
 
     if (number2 < number1) {
