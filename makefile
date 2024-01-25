@@ -1,33 +1,47 @@
 CC = gcc
 CFLAGS = -Wall -g -fPIC
+COMPILATION_MARKER = .last_compilation
 
 all: mains maindloop maindrec recursives recursived loopd loops
 
 mains: main.o recursives
-	$(CC) $(CFLAGS) -o mains main.o libclassrec.a 
+	$(CC) $(CFLAGS) -o $@ main.o libclassrec.a 
+	@touch $(COMPILATION_MARKER)
 
 maindloop: main.o loopd
-	$(CC) $(CFLAGS) -o maindloop main.o ./libclassloop.so
+	$(CC) $(CFLAGS) -o $@ main.o ./libclassloop.so
+	@touch $(COMPILATION_MARKER)
 
 maindrec: main.o recursived
-	$(CC) $(CFLAGS) -o maindrec main.o ./libclassrec.so
+	$(CC) $(CFLAGS) -o $@ main.o ./libclassrec.so
+	@touch $(COMPILATION_MARKER)
 
 recursives: advancedClassificationRecursion.o basicClassification.o
-	ar -rcs libclassrec.a advancedClassificationRecursion.o basicClassification.o
+	ar -rcs libclassrec.a $^
 	ranlib libclassrec.a
+	@touch $(COMPILATION_MARKER)
 
 recursived: advancedClassificationRecursion.o basicClassification.o
-	$(CC) -shared advancedClassificationRecursion.o basicClassification.o -o libclassrec.so
+	$(CC) -shared $^ -o libclassrec.so
+	@touch $(COMPILATION_MARKER)
 
 loopd: advancedClassificationLoop.o basicClassification.o
-	$(CC) -shared advancedClassificationLoop.o basicClassification.o -o libclassloop.so
-	
+	$(CC) -shared $^ -o libclassloop.so
+	@touch $(COMPILATION_MARKER)
+
 loops: advancedClassificationLoop.o basicClassification.o
-	ar -rcs libclassloop.a advancedClassificationLoop.o basicClassification.o
+	ar -rcs libclassloop.a $^
 	ranlib libclassloop.a
+	@touch $(COMPILATION_MARKER)
 
 main.o: main.c NumClass.h
-	$(CC) $(CFLAGS) -c main.c
+	$(CC) $(CFLAGS) -c $<
+	@touch $(COMPILATION_MARKER)
+
+.PHONY: all clean
+
+clean:
+	rm -f *.o *.a *.so mains maindloop maindrec $(COMPILATION_MARKER)
 
 .PHONY: all clean
 
