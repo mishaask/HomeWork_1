@@ -3,7 +3,6 @@ CFLAGS = -Wall -g -fPIC
 
 all: mains maindloop maindrec
 
-
 mains: main.o recursives
 	$(CC) $(CFLAGS) -o mains main.o libclassrec.a
 
