@@ -1,9 +1,11 @@
 CC = gcc
 CFLAGS = -Wall -g -fPIC
 
-all: mains maindloop 
+all: mains maindloop maindrec
 
-mains: main.o recursives loops
+.PHONY: all clean
+
+mains: main.o recursives
 	$(CC) $(CFLAGS) -o mains main.o libclassrec.a 
 
 maindloop: main.o loopd
@@ -25,9 +27,7 @@ loops: advancedClassificationLoop.o basicClassification.o
 	ar -rcs libclassloop.a advancedClassificationLoop.o basicClassification.o
 
 main.o: main.c NumClass.h
-	$(CC) $(CFLAGS) -c main.c -o main.o
-
-.PHONY: all clean
+	$(CC) $(CFLAGS) -c main.c
 
 clean:
 	rm -f *.o *.a *.so mains maindloop maindrec
