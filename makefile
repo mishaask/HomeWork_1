@@ -33,3 +33,7 @@ main.o: main.c NumClass.h
 
 clean:
 	rm -f *.o *.a *.so mains maindloop maindrec
+.PHONY: all clean
+
+clean:
+	rm -f *.o *.a *.so mains maindloop maindrec
