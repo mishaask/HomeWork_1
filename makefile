@@ -17,11 +17,11 @@ recursives: advancedClassificationRecursion.o basicClassification.o
 	ranlib libclassrec.a
 
 recursived: advancedClassificationRecursion.o basicClassification.o
-	$(CC) -shared -o libclassrec.so advancedClassificationRecursion.o basicClassification.o
+	$(CC) -shared advancedClassificationRecursion.o basicClassification.o -o libclassrec.so
 
 loopd: advancedClassificationLoop.o basicClassification.o
-	$(CC) -shared -o libclassloop.so advancedClassificationLoop.o basicClassification.o
-
+	$(CC) -shared advancedClassificationLoop.o basicClassification.o -o libclassloop.so
+	
 loops: advancedClassificationLoop.o basicClassification.o
 	ar -rcs libclassloop.a advancedClassificationLoop.o basicClassification.o
 	ranlib libclassloop.a
