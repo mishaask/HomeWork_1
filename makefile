@@ -29,7 +29,7 @@ loops: advancedClassificationLoop.o basicClassification.o
 main.o: main.c NumClass.h
 	$(CC) $(CFLAGS) -c $<
 
-.PHONY: all clean
+.PHONY: all clean mains maindloop maindrec recursives recursived loopd loops
 
 clean:
 	rm -f *.o *.a *.so mains maindloop maindrec
