@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -g -fPIC
 
-all: mains recursives recursived loopd loops maindloop maindrec
+all: mains maindloop maindrec
 
 
 mains: main.o recursives
