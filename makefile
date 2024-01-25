@@ -7,10 +7,10 @@ mains: main.o recursives
 	$(CC) $(CFLAGS) -o mains main.o libclassrec.a
 
 maindloop: main.o loopd
-	$(CC) $(CFLAGS) -o maindloop main.o -L. -lclassloop
+	$(CC) $(CFLAGS) -o maindloop main.o ./libclassloop.so
 
 maindrec: main.o recursived
-	$(CC) $(CFLAGS) -o maindrec main.o -L. -lclassrec
+	$(CC) $(CFLAGS) -o maindrec main.o ./libclassrec.so
 
 recursives: advancedClassificationRecursion.o basicClassification.o
 	ar -rcs libclassrec.a advancedClassificationRecursion.o basicClassification.o
